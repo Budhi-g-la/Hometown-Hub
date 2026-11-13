@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+{% block title %}Admin Dashboard - Hometown Hub{% endblock %}
+{% block content %}
+<h1>Admin Dashboard 🛠️</h1>
+<p>Welcome to Hometown Hub administration.</p>
+
+<div class="card p-3 mb-4">
+    <h3>Community Posts</h3>
+    {% for post in posts %}
+    <div class="border rounded p-3 mb-2">
+        <h5>{{ post.title }}</h5>
+        <p>{{ post.content }}</p>
+        <small>By {{ post.name }}</small>
+    </div>
+    {% else %}
+    <p>No posts available.</p>
+    {% endfor %}
+</div>
+
+<div class="card p-3">
+    <h3>Community Events</h3>
+    {% for event in events %}
+    <div class="border rounded p-2 mb-2">
+        <strong>{{ event.title }}</strong>
+        <p>{{ event.date }}</p>
+    </div>
+    {% else %}
+    <p>No events available.</p>
+    {% endfor %}
+</div>
+<a href="/" class="btn btn-primary mt-3">Back to Home</a>
+{% endblock %}
