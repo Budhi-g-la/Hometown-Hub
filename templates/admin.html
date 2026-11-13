@@ -2,32 +2,49 @@
 {% extends "base.html" %}
 {% block title %}Admin Dashboard - Hometown Hub{% endblock %}
 {% block content %}
-<h1>Admin Dashboard 🛠️</h1>
-<p>Welcome to Hometown Hub administration.</p>
 
-<div class="card p-3 mb-4">
-    <h3>Community Posts</h3>
-    {% for post in posts %}
-    <div class="border rounded p-3 mb-2">
-        <h5>{{ post.title }}</h5>
-        <p>{{ post.content }}</p>
-        <small>By {{ post.name }}</small>
-    </div>
-    {% else %}
-    <p>No posts available.</p>
-    {% endfor %}
+<h1 class="mb-4">Admin Dashboard 🏡</h1>
+
+<div class="card p-4 mb-4">
+    <h3>Add Community Event</h3>
+    <form action="/admin/add-event" method="POST">
+        <input class="form-control mb-2" name="title" placeholder="Event title" required>
+        <input class="form-control mb-2" type="date" name="event_date">
+        <textarea class="form-control mb-2" name="description" placeholder="Event description"></textarea>
+        <button class="btn btn-primary">Add Event</button>
+    </form>
 </div>
 
-<div class="card p-3">
-    <h3>Community Events</h3>
-    {% for event in events %}
-    <div class="border rounded p-2 mb-2">
-        <strong>{{ event.title }}</strong>
-        <p>{{ event.date }}</p>
-    </div>
-    {% else %}
-    <p>No events available.</p>
-    {% endfor %}
+<h3>Community Posts</h3>
+{% for post in posts %}
+<div class="card p-3 mb-3">
+    <h4>{{ post.title }}</h4>
+    <p>{{ post.content }}</p>
+    <small>Posted by {{ post.name }}</small>
+    <form action="/admin/delete/{{ post.id }}" method="POST">
+        <button class="btn btn-danger btn-sm mt-2">Delete Post</button>
+    </form>
 </div>
-<a href="/" class="btn btn-primary mt-3">Back to Home</a>
+{% else %}
+<p>No posts yet.</p>
+{% endfor %}
+
+<h3 class="mt-4">Community Events</h3>
+{% for event in events %}
+<div class="card p-3 mb-3">
+    <h5>{{ event.title }}</h5>
+    <p>{{ event.event_date }}</p>
+    <p>{{ event.description }}</p>
+    <form action="/admin/delete-event/{{ event.id }}" method="POST">
+        <button class="btn btn-danger btn-sm">Delete Event</button>
+    </form>
+</div>
+{% else %}
+<p>No events yet.</p>
+{% endfor %}
+
+<a href="/admin/logout" class="btn btn-secondary mt-3">Logout</a>
+<a href="/" class="btn btn-primary mt-3">Home</a>
+
 {% endblock %}
+
