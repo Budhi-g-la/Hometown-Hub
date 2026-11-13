@@ -1,0 +1,35 @@
+
+{% extends "base.html" %}
+{% block title %}Home - Hometown Hub{% endblock %}
+{% block content %}
+<section class="hero text-center p-5 rounded-4 mb-4">
+    <h1>Welcome to Hometown Hub 🏡</h1>
+    <p>One Community, One Platform, One Family.</p>
+    <p>Connect with neighbours, share updates and discover local events.</p>
+</section>
+<div class="row g-4">
+    <div class="col-lg-5">
+        <div class="card shadow-sm p-3">
+            <h3>Share a Community Update</h3>
+            <form action="/create-post" method="POST">
+                <input class="form-control mb-3" name="name" placeholder="Your name" required>
+                <input class="form-control mb-3" name="title" placeholder="Post title" required>
+                <textarea class="form-control mb-3" name="content" rows="4" placeholder="What's happening?" required></textarea>
+                <button class="btn btn-primary w-100">Publish Post</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <h3>Community Posts 💬</h3>
+        {% for post in posts %}
+        <div class="card shadow-sm p-3 mb-3">
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.content }}</p>
+            <small>Posted by {{ post.name }}</small>
+        </div>
+        {% else %}
+        <p>No community posts yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
