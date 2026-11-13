@@ -1,0 +1,85 @@
+
+body {
+    background: #f4f7fb;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #2457a7, #397bd1) !important;
+}
+
+.navbar-brand {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.hero {
+    background: linear-gradient(135deg, #dcecff, #eaf3ff);
+    padding: 50px 20px !important;
+    border-radius: 15px;
+}
+
+.hero h1 {
+    color: #174b91;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 17px;
+    color: #45566d;
+}
+
+.card {
+    border: none;
+    border-radius: 14px;
+    background: white;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+h2, h3, h4 {
+    color: #2457a7;
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.btn-primary {
+    background: #2864b5;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 20px;
+}
+
+.btn-primary:hover {
+    background: #174b91;
+}
+
+footer {
+    color: #777;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .hero {
+        padding: 30px 15px !important;
+    }
+
+    .navbar-brand {
+        font-size: 19px;
+    }
+}
